@@ -8,7 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [
     tanstackStart({
-      server: {
+      ssr: false, server: {
         entry: "src/server.ts",
       },
     }),
