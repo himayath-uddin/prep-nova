@@ -4,10 +4,10 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
-// Standard TanStack Start configuration for flexible deployment (Vercel, Cloudflare, Netlify, etc.)
 export default defineConfig({
   plugins: [
     tanstackStart({
+      ssr: false,
       server: {
         entry: "src/server.ts",
       },
