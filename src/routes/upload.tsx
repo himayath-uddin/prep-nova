@@ -47,6 +47,7 @@ function UploadPage() {
 
   // Restore from localStorage on mount
   useEffect(() => {
+    console.log("Featherless Key Length:", import.meta.env.VITE_FEATHERLESS_KEY?.length || 0);
     const savedResume = localStorage.getItem("resumeText") ?? "";
     const savedJD = localStorage.getItem("jobDescription") ?? "";
     const savedRole = localStorage.getItem("jobRole") ?? "";
@@ -86,9 +87,27 @@ function UploadPage() {
     navigate({ to: "/dashboard" });
   };
 
+  const handleClear = () => {
+    localStorage.removeItem("resumeText");
+    localStorage.removeItem("jobDescription");
+    localStorage.removeItem("jobRole");
+    setResumeFile(null);
+    setResumeText("");
+    setJdText("");
+    setRole("");
+  };
+
   return (
     <div className="mx-auto max-w-[1400px] px-6 pb-24">
-      <Header title="Profile Setup" sub="Provide your resume and job details to personalize the AI Twin." />
+      <div className="flex items-start justify-between mb-8">
+        <Header title="Profile Setup" sub="Provide your resume and job details to personalize the AI Twin." />
+        <button
+          onClick={handleClear}
+          className="px-4 py-2 text-sm font-semibold text-slate-500 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-700 transition-colors"
+        >
+          Clear Data
+        </button>
+      </div>
 
       <AnimatePresence mode="wait">
         <motion.div
