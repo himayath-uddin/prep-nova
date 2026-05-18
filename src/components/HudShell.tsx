@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Bell, LogOut, Cpu, ChevronDown, User as UserIcon } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
-import { logout } from "@/lib/localAuth";
+import { logout } from "@/lib/firebase";
 import { AuthModal } from "./AuthModal";
 
 const NAV = [

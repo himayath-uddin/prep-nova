@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Promptal AI",
+        "supportEmail": "himayathuddin1@gmail.com"
+      }
+    }
+  }
+}

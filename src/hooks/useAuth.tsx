@@ -1,15 +1,16 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { type LocalUser, onUserChange, getCurrentUser } from "@/lib/localAuth";
+import { type User } from "firebase/auth";
+import { onUserChange } from "@/lib/firebase";
 
 interface AuthContextValue {
-  user: LocalUser | null;
+  user: User | null;
   loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextValue>({ user: null, loading: true });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser]       = useState<LocalUser | null>(getCurrentUser);
+  const [user, setUser]       = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,8 +18,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(u);
       setLoading(false);
     });
-    // Resolve loading immediately if we already have a user
-    setLoading(false);
     return unsub;
   }, []);
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, Lock, User, Chrome, Loader2, AlertCircle } from "lucide-react";
-import { loginWithEmail, loginWithGoogle, registerWithEmail } from "@/lib/localAuth";
+import { loginWithEmail, loginWithGoogle, registerWithEmail } from "@/lib/firebase";
 
 interface Props {
   open: boolean;
