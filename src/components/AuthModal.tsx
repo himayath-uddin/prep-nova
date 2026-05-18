@@ -131,9 +131,6 @@ export function AuthModal({ open, onClose, onSuccess }: Props) {
                 </button>
               </p>
 
-              <p className="mt-4 text-center text-xs text-slate-400">
-                ✓ No Firebase required — your account is stored locally
-              </p>
             </div>
           </motion.div>
         </>
