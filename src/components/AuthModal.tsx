@@ -25,10 +25,10 @@ export function AuthModal({ open, onClose, onSuccess }: Props) {
     clearError();
     try {
       if (mode === "login") {
-        loginWithEmail(email, password);
+        await loginWithEmail(email, password);
       } else {
         if (!name.trim()) { setError("Please enter your full name."); setLoading(false); return; }
-        registerWithEmail(email, password, name);
+        await registerWithEmail(email, password, name);
       }
       onSuccess?.();
       onClose();
@@ -43,7 +43,7 @@ export function AuthModal({ open, onClose, onSuccess }: Props) {
     setLoading(true);
     clearError();
     try {
-      loginWithGoogle(name || "Google User");
+      await loginWithGoogle();
       onSuccess?.();
       onClose();
     } catch (err: unknown) {
