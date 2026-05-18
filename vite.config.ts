@@ -1,17 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
+// Pure client-side SPA — no SSR, works perfectly on Vercel free tier
 export default defineConfig({
   plugins: [
-    tanstackStart({
-      ssr: false,
-      server: {
-        entry: "src/server.ts",
-      },
-    }),
+    TanStackRouterVite({ routesDirectory: "src/routes", generatedRouteTree: "src/routeTree.gen.ts" }),
     react(),
     tailwindcss(),
     tsconfigPaths(),
@@ -20,5 +16,8 @@ export default defineConfig({
     alias: {
       "@": "/src",
     },
+  },
+  build: {
+    outDir: "dist",
   },
 });
